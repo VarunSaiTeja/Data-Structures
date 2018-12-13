@@ -64,7 +64,7 @@ StackUsingSingleLinkedListMenu:
     case 3:
         //DisplayNodes();
         break;
-    case 5:
+    case 4:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

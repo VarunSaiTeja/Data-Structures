@@ -35,6 +35,24 @@ void appendAtLast()
     printf("Node created at end");
 }
 
+int totalNodes()
+{
+    int count=0;
+    
+    if(root!=NULL)
+    {
+        struct node *temp;
+        temp = root;
+        while (temp!= NULL)
+        {
+            ++count;
+            temp = temp->link;
+        }
+    }
+
+    return count;
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -64,7 +82,7 @@ SingleLinkedListMenu:
         //appendAtNode();
         break;
     case 4:
-        //totalNodes();
+        printf("Total nodes are %d",totalNodes());
         break;
     case 5:
         //displayNodes();

@@ -53,6 +53,24 @@ int totalNodes()
     return count;
 }
 
+void displayNodes()
+{
+    if(root==NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        struct node *temp;
+        temp=root;
+        while(temp!=NULL)
+        {
+            printf("%d  ",temp->data);
+            temp=temp->link;
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -85,7 +103,7 @@ SingleLinkedListMenu:
         printf("Total nodes are %d",totalNodes());
         break;
     case 5:
-        //displayNodes();
+        displayNodes();
         break;
     case 6:
         //deleteNode();

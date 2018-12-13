@@ -27,6 +27,21 @@ int isEmpty()
     return FALSE;
 }
 
+void insertItem()
+{
+    if(isFull())
+    {
+        printf("Queue is Full");
+    }
+    else
+    {
+        printf("Enter an item  : ");
+        scanf("%d",&queue[rear++]);
+        system("cls");
+        printf("Item inserted to Queue");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -44,7 +59,7 @@ QueueMenu:
     switch (choice)
     {
     case 1:
-        //insertItem();
+        insertItem();
         break;
     case 2:
         //deleteItem();

@@ -66,7 +66,14 @@ void PopItem()
 
 void PeekItem()
 {
-
+    if(isEmpty())
+    {
+        printf("Stack is Empty");
+    }
+    else
+    {
+        printf("Last item inserted : %d",stack[top]);
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -74,6 +81,7 @@ int main(int argc, char const *argv[])
     int choice;
 StackMenu:
     system("cls");
+    printf("Stack Operations : \n\n");
     printf("1. Push\n2. Pop\n3. Peek\n4. Display Items\n5. Quit");
     printf("\n\nChoice : ");
     scanf("%d", &choice);

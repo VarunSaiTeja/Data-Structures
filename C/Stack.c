@@ -43,12 +43,28 @@ void PushItem()
     }
 }
 
+void DisplayItems()
+{
+    if(isEmpty())
+    {
+        printf("Stack is Empty");
+    }
+    else
+    {
+        printf("Stack items are : ");
+        for(int loop=0;loop<top;loop++)
+        {
+            printf("%d  ",stack[loop]);
+        }
+    }
+}
+
 void main(int argc, char const *argv[])
 {
     int choice;
 StackMenu:
     system("cls");
-    printf("1. Push\n2. Pop\n3. Peek\n4. Transverse\n5. Quit");
+    printf("1. Push\n2. Pop\n3. Peek\n4. Display Items\n5. Quit");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");

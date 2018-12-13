@@ -10,6 +10,8 @@ struct node
 
 struct node *root=NULL;
 
+int totalNodes();
+
 void appendAtLast()
 {
     struct node *temp;
@@ -54,6 +56,45 @@ void appendAtBegin()
     }
 
     printf("Node created at begin");
+}
+
+void appendAtNode()
+{   
+    if(totalNodes())
+    {
+        int loc;
+        printf("Enter location of node to append : ");
+        scanf("%d", &loc);
+        
+        if (loc > totalNodes())
+        {
+            printf("Invalid to location to append");
+        }
+        else
+        {
+            int count = 1;
+            struct node *temp, *p, *q;
+            temp = (struct node *)malloc(sizeof(struct node));
+
+            system("cls");
+            printf("Enter data : ");
+            scanf("%d", &temp->data);
+
+            p = root;
+            while (count < loc)
+            {
+                ++count;
+                p = p->link;
+            }
+            temp->link = p->link;
+            p->link = temp;
+            printf("Node appended at desired location");
+        }
+    }
+    else
+    {
+        printf("Nodes are Empty");
+    }
 }
 
 int totalNodes()
@@ -118,7 +159,7 @@ SingleLinkedListMenu:
         appendAtBegin();
         break;
     case 3:
-        //appendAtNode();
+        appendAtNode();
         break;
     case 4:
         printf("Total nodes are %d",totalNodes());

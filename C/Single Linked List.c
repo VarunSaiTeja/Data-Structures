@@ -8,31 +8,31 @@ struct node
     struct node *link;
 };
 
-struct node *root=NULL;
+struct node *root = NULL;
 
 int totalNodes();
 
 void appendAtLast()
 {
     struct node *temp;
-    temp=(struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     printf("Enter data : ");
-    scanf("%d",&temp->data);
-    temp->link=NULL;
+    scanf("%d", &temp->data);
+    temp->link = NULL;
 
-    if(root==NULL)
+    if (root == NULL)
     {
-        root=temp;
+        root = temp;
     }
     else
     {
         struct node *p;
-        p=root;
-        while(p->link!=NULL)
+        p = root;
+        while (p->link != NULL)
         {
-            p=p->link;
+            p = p->link;
         }
-        p->link=temp;
+        p->link = temp;
     }
     printf("Node created at end");
 }
@@ -40,27 +40,27 @@ void appendAtLast()
 void appendAtBegin()
 {
     struct node *temp;
-    temp=(struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     printf("Enter data : ");
-    scanf("%d",&temp->data);
-    temp->link=NULL;
+    scanf("%d", &temp->data);
+    temp->link = NULL;
 
-    if(root==NULL)
+    if (root == NULL)
     {
-        root=temp;
+        root = temp;
     }
     else
     {
-        temp->link=root;
-        root=temp;
+        temp->link = root;
+        root = temp;
     }
 
     printf("Node created at begin");
 }
 
 void appendAtNode()
-{   
-    if(totalNodes())
+{
+    if (totalNodes())
     {
         int loc;
         printf("Enter location of node to append : ");
@@ -99,7 +99,7 @@ void appendAtNode()
 
 void deleteNode()
 {
-    if(root==NULL)
+    if (root == NULL)
     {
         printf("Nodes are Empty");
     }
@@ -107,36 +107,36 @@ void deleteNode()
     {
         int loc;
         printf("Enter location of node to delete : ");
-        scanf("%d",&loc);
+        scanf("%d", &loc);
         system("cls");
-        
-        if(loc>totalNodes() || loc==0)
+
+        if (loc > totalNodes() || loc == 0)
         {
-            printf("Node doest not exist at %d location",loc);
+            printf("Node doest not exist at %d location", loc);
         }
-        else if(loc==1)
+        else if (loc == 1)
         {
             struct node *temp;
-            temp=root;
-            root=temp->link;
-            temp->link=NULL;
+            temp = root;
+            root = temp->link;
+            temp->link = NULL;
             printf("Node deleted at desired location");
         }
         else
         {
-            int count=1;
-            struct node *p,*q;
-            p=root;
+            int count = 1;
+            struct node *p, *q;
+            p = root;
 
-            while(count<(loc-1))
+            while (count < (loc - 1))
             {
                 ++count;
-                p=p->link;
+                p = p->link;
             }
-            
-            q=p->link;
-            p->link=q->link;
-            q->link=NULL;
+
+            q = p->link;
+            p->link = q->link;
+            q->link = NULL;
             free(q);
             printf("Node deleted at desired location");
         }
@@ -145,13 +145,13 @@ void deleteNode()
 
 int totalNodes()
 {
-    int count=0;
-    
-    if(root!=NULL)
+    int count = 0;
+
+    if (root != NULL)
     {
         struct node *temp;
         temp = root;
-        while (temp!= NULL)
+        while (temp != NULL)
         {
             ++count;
             temp = temp->link;
@@ -163,18 +163,18 @@ int totalNodes()
 
 void displayNodes()
 {
-    if(root==NULL)
+    if (root == NULL)
     {
         printf("Nodes are Empty");
     }
     else
     {
         struct node *temp;
-        temp=root;
-        while(temp!=NULL)
+        temp = root;
+        while (temp != NULL)
         {
-            printf("%d  ",temp->data);
-            temp=temp->link;
+            printf("%d  ", temp->data);
+            temp = temp->link;
         }
     }
 }
@@ -208,7 +208,7 @@ SingleLinkedListMenu:
         appendAtNode();
         break;
     case 4:
-        printf("Total nodes are %d",totalNodes());
+        printf("Total nodes are %d", totalNodes());
         break;
     case 5:
         displayNodes();

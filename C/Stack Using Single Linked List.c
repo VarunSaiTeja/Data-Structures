@@ -13,27 +13,27 @@ struct node *top = NULL;
 void PushNode()
 {
     struct node *temp;
-    temp=(struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     printf("Enter data : ");
-    scanf("%d",&temp->data);
-    temp->link=top;
-    top=temp;
+    scanf("%d", &temp->data);
+    temp->link = top;
+    top = temp;
     system("cls");
     printf("Node Pushed to Stack");
 }
 
 void PopNode()
-{    
-    if(top==NULL)
+{
+    if (top == NULL)
     {
         printf("Nodes are Empty");
     }
     else
     {
         struct node *temp;
-        temp=top;
-        top=temp->link;
-        temp->link=NULL;
+        temp = top;
+        top = temp->link;
+        temp->link = NULL;
         free(temp);
         printf("Last Node insertes was Popped");
     }
@@ -47,9 +47,8 @@ StackUsingSingleLinkedListMenu:
     printf("Single Linked List Operations : \n\n");
     printf("1. Push\n");
     printf("2. Pop\n");
-    printf("3. Peek\n");
-    printf("4. Display\n");
-    printf("5. Quit\n");
+    printf("3. Display\n");
+    printf("4. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -63,9 +62,6 @@ StackUsingSingleLinkedListMenu:
         PopNode();
         break;
     case 3:
-        //PeekNode();
-        break;
-    case 4:
         //DisplayNodes();
         break;
     case 5:

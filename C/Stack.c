@@ -37,7 +37,7 @@ void PushItem()
     else
     {
         printf("Enter an item : ");
-        scanf("%d",stack[++top]);
+        scanf("%d",&stack[++top]);
         system("cls");
         printf("Item pushed to stack");
     }
@@ -52,14 +52,24 @@ void DisplayItems()
     else
     {
         printf("Stack items are : ");
-        for(int loop=0;loop<top;loop++)
+        for(int loop=0;loop<=top;loop++)
         {
             printf("%d  ",stack[loop]);
         }
     }
 }
 
-void main(int argc, char const *argv[])
+void PopItem()
+{
+
+}
+
+void PeekItem()
+{
+
+}
+
+int main(int argc, char const *argv[])
 {
     int choice;
 StackMenu:
@@ -82,6 +92,7 @@ StackMenu:
         break;
     case 4:
         DisplayItems();
+        break;
     case 5:
         exit(0);
     default:

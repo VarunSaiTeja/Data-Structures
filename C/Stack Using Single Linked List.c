@@ -10,6 +10,18 @@ struct node
 
 struct node *top = NULL;
 
+void PushNode()
+{
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    printf("Enter data : ");
+    scanf("%d",&temp->data);
+    temp->link=top;
+    top=temp;
+    system("cls");
+    printf("Node Pushed to Stack");
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -28,7 +40,7 @@ StackUsingSingleLinkedListMenu:
     switch (choice)
     {
     case 1:
-        //PushNode();
+        PushNode();
         break;
     case 2:
         //PopNode();

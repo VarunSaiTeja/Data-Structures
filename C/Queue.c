@@ -13,7 +13,7 @@ int isEmpty();
 
 int isFull()
 {
-    if(rear+==capacity)
+    if(rear==capacity)
     return TRUE;
     else
     return FALSE;

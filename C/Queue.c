@@ -58,6 +58,25 @@ void displayItems()
     }
 }
 
+void deleteItem()
+{
+    if(isEmpty())
+    {
+        printf("Queue is Empty");
+    }
+    else
+    {
+        --rear;
+
+        for(int loop = 0; loop < rear; loop++)
+        {
+            queue[loop]=queue[loop+1];
+        }
+        
+        printf("Item removed from queue");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -78,7 +97,7 @@ QueueMenu:
         insertItem();
         break;
     case 2:
-        //deleteItem();
+        deleteItem();
         break;
     case 3:
         displayItems();

@@ -39,6 +39,25 @@ void PopNode()
     }
 }
 
+void DisplayNodes()
+{
+    if(top==NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        struct node *temp;
+        temp=top;
+        printf("Data in nodes are : ");
+        while(temp!=NULL)
+        {
+            printf("%d  ",temp->data);
+            temp=temp->link;
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -62,7 +81,7 @@ StackUsingSingleLinkedListMenu:
         PopNode();
         break;
     case 3:
-        //DisplayNodes();
+        DisplayNodes();
         break;
     case 4:
         exit(0);

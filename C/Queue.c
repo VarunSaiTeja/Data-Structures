@@ -11,6 +11,22 @@ void displayItems();
 int isFull();
 int isEmpty();
 
+int isFull()
+{
+    if((rear+1)==capacity)
+    return TRUE;
+    else
+    return FALSE;
+}
+
+int isEmpty()
+{
+    if(rear)
+    return TRUE;
+    else
+    return FALSE;
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;

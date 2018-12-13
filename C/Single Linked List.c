@@ -65,7 +65,7 @@ void appendAtNode()
         int loc;
         printf("Enter location of node to append : ");
         scanf("%d", &loc);
-        
+
         if (loc > totalNodes())
         {
             printf("Invalid to location to append");
@@ -94,6 +94,52 @@ void appendAtNode()
     else
     {
         printf("Nodes are Empty");
+    }
+}
+
+void deleteNode()
+{
+    if(root==NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        int loc;
+        printf("Enter location of node to delete : ");
+        scanf("%d",&loc);
+        system("cls");
+        
+        if(loc>totalNodes() || loc==0)
+        {
+            printf("Node doest not exist at %d location",loc);
+        }
+        else if(loc==1)
+        {
+            struct node *temp;
+            temp=root;
+            root=temp->link;
+            temp->link=NULL;
+            printf("Node deleted at desired location");
+        }
+        else
+        {
+            int count=1;
+            struct node *p,*q;
+            p=root;
+
+            while(count<(loc-1))
+            {
+                ++count;
+                p=p->link;
+            }
+            
+            q=p->link;
+            p->link=q->link;
+            q->link=NULL;
+            free(q);
+            printf("Node deleted at desired location");
+        }
     }
 }
 
@@ -168,7 +214,7 @@ SingleLinkedListMenu:
         displayNodes();
         break;
     case 6:
-        //deleteNode();
+        deleteNode();
         break;
     case 7:
         exit(0);

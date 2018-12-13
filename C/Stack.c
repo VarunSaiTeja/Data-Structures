@@ -61,7 +61,14 @@ void DisplayItems()
 
 void PopItem()
 {
-
+    if(isEmpty())
+    {
+        printf("Stack is Empty");
+    }
+    else
+    {
+        printf("Last inserted Item %d was popped",stack[top--]);
+    }
 }
 
 void PeekItem()

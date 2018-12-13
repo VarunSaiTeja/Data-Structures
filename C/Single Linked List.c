@@ -35,6 +35,27 @@ void appendAtLast()
     printf("Node created at end");
 }
 
+void appendAtBegin()
+{
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    printf("Enter data : ");
+    scanf("%d",&temp->data);
+    temp->link=NULL;
+
+    if(root==NULL)
+    {
+        root=temp;
+    }
+    else
+    {
+        temp->link=root;
+        root=temp;
+    }
+
+    printf("Node created at begin");
+}
+
 int totalNodes()
 {
     int count=0;
@@ -94,7 +115,7 @@ SingleLinkedListMenu:
         appendAtLast();
         break;
     case 2:
-        //appendAtBegin();
+        appendAtBegin();
         break;
     case 3:
         //appendAtNode();

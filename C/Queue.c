@@ -22,9 +22,9 @@ int isFull()
 int isEmpty()
 {
     if(rear)
-    return TRUE;
-    else
     return FALSE;
+    else
+    return TRUE;
 }
 
 void insertItem()

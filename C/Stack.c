@@ -9,6 +9,8 @@ void PushItem();
 void PopItem();
 void PeekItem();
 void DisplayItems();
+int isFull();
+int isEmpty();
 
 int isFull()
 {
@@ -24,6 +26,21 @@ int isEmpty()
         return TRUE;
     else
         return FALSE;
+}
+
+void PushItem()
+{
+    if(isFull())
+    {
+        printf("Stack is Full");
+    }
+    else
+    {
+        printf("Enter an item : ");
+        scanf("%d",stack[++top]);
+        system("cls");
+        printf("Item pushed to stack");
+    }
 }
 
 void main(int argc, char const *argv[])

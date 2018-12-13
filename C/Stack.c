@@ -10,6 +10,22 @@ void PopItem();
 void PeekItem();
 void DisplayItems();
 
+int isFull()
+{
+    if((top+1)==capacity)
+    return TRUE;
+    else
+    return FALSE;
+}
+
+int isEmpty()
+{
+    if (top == -1)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 void main(int argc, char const *argv[])
 {
     int choice;

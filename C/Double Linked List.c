@@ -157,6 +157,57 @@ int totalNodes()
     return count;
 }
 
+void deleteNode()
+{
+    if (totalNodes())
+    {
+        int loc;
+        printf("Enter location of node to delete : ");
+        scanf("%d", &loc);
+        system("cls");
+
+        if (loc > totalNodes() || loc == 0)
+        {
+            printf("Node doest not exist at %d location", loc);
+        }
+        else if (loc == 1)
+        {
+            struct node *temp;
+            temp = root;
+            root = temp->right;
+            temp->right->left = NULL;
+            temp->right = NULL;
+            free(temp);
+
+            printf("Node deleted at desired location");
+        }
+        else
+        {
+            int count = 1;
+            struct node *p, *q;
+            p = root;
+
+            while (count < (loc - 1))
+            {
+                ++count;
+                p = p->right;
+            }
+
+            q = p->right;
+            p->right = q->right;
+            q->right = NULL;
+            q->left = NULL;
+            free(q);
+
+            printf("Node deleted at desired location");
+        }
+    }
+    else
+    {
+        printf("Nodes are Empty");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -194,7 +245,7 @@ DoubleLinkedListMenu:
         displayNodes();
         break;
     case 6:
-        //deleteNode();
+        deleteNode();
         break;
     case 7:
         //swapAdjacentNodes();

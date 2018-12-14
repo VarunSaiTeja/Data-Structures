@@ -179,6 +179,10 @@ void displayNodes()
     }
 }
 
+void SwapNodes()
+{
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -191,7 +195,8 @@ SingleLinkedListMenu:
     printf("4. Length\n");
     printf("5. Display\n");
     printf("6. Delete\n");
-    printf("7. Quit\n");
+    printf("7. Swap Node");
+    printf("8. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -217,6 +222,9 @@ SingleLinkedListMenu:
         deleteNode();
         break;
     case 7:
+        SwapNodes();
+        break;
+    case 8:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

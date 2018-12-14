@@ -89,17 +89,17 @@ void displayNodes()
 
 int totalNodes()
 {
-    int count=0;
+    int count = 0;
 
-    if(root!=NULL)
+    if (root != NULL)
     {
         struct node *temp;
         temp = root;
 
-        while(temp!=NULL)
+        while (temp != NULL)
         {
             ++count;
-            temp=temp->right;
+            temp = temp->right;
         }
     }
 

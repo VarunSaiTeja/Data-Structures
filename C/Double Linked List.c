@@ -40,6 +40,31 @@ void appendAtLast()
     printf("Node created at end");
 }
 
+void appendAtBegin()
+{
+    struct node *temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    printf("Enter data : ");
+    scanf("%d", &temp->data);
+    system("cls");
+    temp->left = NULL;
+    temp->right = NULL;
+
+    if (root == NULL)
+    {
+        root = temp;
+    }
+    else
+    {
+        struct node *p;
+        p = root;
+        temp->right = root;
+        root = temp;
+    }
+
+    printf("Node created at begin");
+}
+
 void displayNodes()
 {
     if (root == NULL)
@@ -85,7 +110,7 @@ DoubleLinkedListMenu:
         appendAtLast();
         break;
     case 2:
-        ///appendAtBegin();
+        appendAtBegin();
         break;
     case 3:
         //appendAtNode();

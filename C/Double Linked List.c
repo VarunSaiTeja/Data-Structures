@@ -40,6 +40,26 @@ void appendAtLast()
     printf("Node created at end");
 }
 
+void displayNodes()
+{
+    if (root == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        struct node *temp;
+        temp = root;
+
+        printf("Data in Nodes : ");
+        while (temp != NULL)
+        {
+            printf("%d  ", temp->data);
+            temp = temp->right;
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -74,7 +94,7 @@ DoubleLinkedListMenu:
         //printf("Total nodes are %d", totalNodes());
         break;
     case 5:
-        //displayNodes();
+        displayNodes();
         break;
     case 6:
         //deleteNode();

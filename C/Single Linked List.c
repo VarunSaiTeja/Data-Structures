@@ -226,6 +226,73 @@ void swapAdjacentNodes()
     }
 }
 
+void SwapNodes()
+{
+    if (root == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        int loc1, loc2;
+        printf("Enter 1st Node location : ");
+        scanf("%d", &loc1);
+        system("cls");
+
+        if (loc1 > totalNodes())
+        {
+            printf("1st Node does not exist in that location");
+        }
+        else
+        {
+            printf("Enter 2nd Node Location : ");
+            scanf("%d", &loc2);
+            system("cls");
+
+            if (loc2 > totalNodes())
+            {
+                printf("2nd Node does not exist in that location");
+            }
+            else if ((loc1+1) == loc2)
+            {
+                printf("Try adjacent node swapping");
+            }
+            else
+            {
+                int count;
+                struct node *a, *b, *c, *d, *temp;
+                a = root;
+                c = root;
+                temp = (struct node *)malloc(sizeof(struct node));
+
+                count = 1;
+                while (count < (loc1 - 1))
+                {
+                    ++count;
+                    a = a->link;
+                }
+                b = a->link;
+
+                count = 1;
+                while (count < (loc2 - 1))
+                {
+                    ++count;
+                    c = c->link;
+                }
+                d = c->link;
+
+                temp->link = d->link;
+                d->link = b->link;
+                b->link = temp->link;
+                a->link = d;
+                c->link = b;
+
+                printf("Nodes swapped");
+            }
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -239,7 +306,8 @@ SingleLinkedListMenu:
     printf("5. Display\n");
     printf("6. Delete\n");
     printf("7. Swap Adjacent Nodes\n");
-    printf("8. Quit\n");
+    printf("8. Swap Nodes\n");
+    printf("9. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -268,6 +336,9 @@ SingleLinkedListMenu:
         swapAdjacentNodes();
         break;
     case 8:
+        SwapNodes();
+        break;
+    case 9:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

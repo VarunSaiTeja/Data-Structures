@@ -179,8 +179,51 @@ void displayNodes()
     }
 }
 
-void SwapNodes()
+void swapAdjacentNodes()
 {
+    if (root == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        int loc;
+        printf("Enter the location of node : ");
+        scanf("%d", &loc);
+        system("cls");
+        if (loc > totalNodes())
+        {
+            printf("Node doest not exist in that location");
+        }
+        else
+        {
+            if (loc + 1 > totalNodes())
+            {
+                printf("Adjacent node does not exist");
+            }
+            else
+            {
+                int count = 1;
+                struct node *p, *q, *r;
+                p = root;
+
+                while (count < (loc - 1))
+                {
+                    ++count;
+                    p = p->link;
+                }
+
+                q = p->link;
+                r = q->link;
+
+                q->link = r->link;
+                p->link = r;
+                r->link = q;
+
+                printf("Node swapped with adjacent one");
+            }
+        }
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -195,7 +238,7 @@ SingleLinkedListMenu:
     printf("4. Length\n");
     printf("5. Display\n");
     printf("6. Delete\n");
-    printf("7. Swap Node");
+    printf("7. Swap Adjacent Nodes\n");
     printf("8. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
@@ -222,7 +265,7 @@ SingleLinkedListMenu:
         deleteNode();
         break;
     case 7:
-        SwapNodes();
+        swapAdjacentNodes();
         break;
     case 8:
         exit(0);

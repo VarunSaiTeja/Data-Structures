@@ -10,6 +10,36 @@ struct node
 
 struct node *root = NULL;
 
+void appendAtLast()
+{
+    struct node *temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    printf("Enter data : ");
+    scanf("%d", &temp->data);
+    system("cls");
+    temp->left = NULL;
+    temp->right = NULL;
+
+    if (root == NULL)
+    {
+        root = temp;
+    }
+    else
+    {
+        struct node *p;
+        p = root;
+
+        while (p->right != NULL)
+        {
+            p = p->right;
+        }
+        p->right = temp;
+        temp->left = p;
+    }
+
+    printf("Node created at end");
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -32,7 +62,7 @@ DoubleLinkedListMenu:
     switch (choice)
     {
     case 1:
-        //appendAtLast();
+        appendAtLast();
         break;
     case 2:
         ///appendAtBegin();

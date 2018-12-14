@@ -67,6 +67,57 @@ void appendAtBegin()
     printf("Node created at begin");
 }
 
+void appendAtNode()
+{
+    if (totalNodes())
+    {
+        int loc;
+        printf("Enter location of node to append : ");
+        scanf("%d", &loc);
+        system("cls");
+
+        if (loc > totalNodes())
+        {
+            printf("Invalid location to append");
+        }
+        else if (loc == totalNodes())
+        {
+            printf("Trying to append at end of node\n\nTry \"Append at End\" option");
+        }
+        else
+        {
+            int count = 1;
+            struct node *temp, *p;
+            temp = (struct node *)malloc(sizeof(struct node));
+
+            system("cls");
+            printf("Enter data : ");
+            scanf("%d", &temp->data);
+            system("cls");
+            temp->left = NULL;
+            temp->right = NULL;
+
+            p = root;
+            while (count < loc)
+            {
+                ++count;
+                p = p->right;
+            }
+
+            temp->right = p->right;
+            p->right->left = temp;
+            temp->left = p;
+            p->right = temp;
+
+            printf("Node appended at desired location");
+        }
+    }
+    else
+    {
+        printf("Nodes are Empty");
+    }
+}
+
 void displayNodes()
 {
     if (root == NULL)
@@ -134,7 +185,7 @@ DoubleLinkedListMenu:
         appendAtBegin();
         break;
     case 3:
-        //appendAtNode();
+        appendAtNode();
         break;
     case 4:
         printf("Total nodes are %d", totalNodes());

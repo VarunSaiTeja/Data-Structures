@@ -253,7 +253,7 @@ void SwapNodes()
             {
                 printf("2nd Node does not exist in that location");
             }
-            else if ((loc1+1) == loc2)
+            else if ((loc1 + 1) == loc2)
             {
                 printf("Try adjacent node swapping");
             }

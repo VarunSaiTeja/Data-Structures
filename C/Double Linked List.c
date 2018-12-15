@@ -118,7 +118,7 @@ void appendAtNode()
     }
 }
 
-void displayNodes()
+void displayNodesData()
 {
     if (root == NULL)
     {
@@ -133,6 +133,27 @@ void displayNodes()
         while (temp != NULL)
         {
             printf("%d  ", temp->data);
+            temp = temp->right;
+        }
+    }
+}
+
+void displayNodesDataAndLinks()
+{
+    if (root == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        struct node *temp;
+        temp = root;
+
+        printf("\nRoot of Node = %u\n\n\n", root);
+
+        while (temp != NULL)
+        {
+            printf("%u = %u -> %d -> %u\n\n", temp, temp->left, temp->data, temp->right);
             temp = temp->right;
         }
     }
@@ -259,7 +280,7 @@ void swapAdjacentNodes()
                     b->left = NULL;
                     b->right = a;
                     a->left = b;
-                    root=b;
+                    root = b;
                 }
                 else
                 {
@@ -297,11 +318,12 @@ DoubleLinkedListMenu:
     printf("2. Append at Begin\n");
     printf("3. Append at Node\n");
     printf("4. Length\n");
-    printf("5. Display\n");
-    printf("6. Delete\n");
-    printf("7. Swap Adjacent Nodes\n");
-    printf("8. Swap Nodes\n");
-    printf("9. Quit\n");
+    printf("5. Display only Nodes Data\n");
+    printf("6. Display with Nodes Data & Links\n");
+    printf("7. Delete\n");
+    printf("8. Swap Adjacent Nodes\n");
+    printf("9. Swap Nodes\n");
+    printf("10. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -321,18 +343,21 @@ DoubleLinkedListMenu:
         printf("Total nodes are %d", totalNodes());
         break;
     case 5:
-        displayNodes();
+        displayNodesData();
         break;
     case 6:
-        deleteNode();
+        displayNodesDataAndLinks();
         break;
     case 7:
-        swapAdjacentNodes();
+        deleteNode();
         break;
     case 8:
-        //SwapNodes();
+        swapAdjacentNodes();
         break;
     case 9:
+        //SwapNodes();
+        break;
+    case 10:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

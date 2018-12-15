@@ -208,6 +208,85 @@ void deleteNode()
     }
 }
 
+void swapAdjacentNodes()
+{
+    if (root == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        int loc;
+        printf("Enter the location of node : ");
+        scanf("%d", &loc);
+        system("cls");
+        if (loc > totalNodes())
+        {
+            printf("Node doest not exist in that location");
+        }
+        else
+        {
+            if ((loc + 1) > totalNodes())
+            {
+                printf("Adjacent node does not exist");
+            }
+            else
+            {
+                int count = 1;
+                struct node *a, *b, *c;
+                a = root;
+
+                while (count < (loc - 1))
+                {
+                    ++count;
+                    a = a->right;
+                }
+
+                b = a->right;
+
+                if (loc == 1)
+                {
+                    if ((loc + 1) == totalNodes())
+                    {
+                        a->right = NULL;
+                    }
+                    else
+                    {
+                        a->right = b->right;
+                        b->right->left = a;
+                    }
+
+                    b->left = NULL;
+                    b->right = a;
+                    a->left = b;
+                    root=b;
+                }
+                else
+                {
+                    c = b->right;
+
+                    if ((loc + 1) != totalNodes())
+                    {
+                        c->right->left = b;
+                        b->right = c->right;
+                    }
+                    else
+                    {
+                        b->right = NULL;
+                    }
+
+                    a->right = c;
+                    c->left = a;
+                    b->left = c;
+                    c->right = b;
+                }
+
+                printf("Node swapped with adjacent one");
+            }
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -248,7 +327,7 @@ DoubleLinkedListMenu:
         deleteNode();
         break;
     case 7:
-        //swapAdjacentNodes();
+        swapAdjacentNodes();
         break;
     case 8:
         //SwapNodes();

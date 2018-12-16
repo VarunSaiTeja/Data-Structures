@@ -293,6 +293,40 @@ void SwapNodes()
     }
 }
 
+void ReverseNodesData()
+{
+    if (root == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        int i = 0, j, count, temp;
+        j = totalNodes() - 1;
+        struct node *p, *q;
+        p = q = root;
+
+        while (i < j)
+        {
+            count = 0;
+            while (count < j)
+            {
+                ++count;
+                q = q->link;
+            }
+            temp = p->data;
+            p->data = q->data;
+            q->data = temp;
+            p = p->link;
+            q = root;
+            i++;
+            --j;
+        }
+
+        printf("Data in Nodes Swapped");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -307,7 +341,8 @@ SingleLinkedListMenu:
     printf("6. Delete\n");
     printf("7. Swap Adjacent Nodes\n");
     printf("8. Swap Nodes\n");
-    printf("9. Quit\n");
+    printf("9. Reverse Data in Nodes\n");
+    printf("10. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -339,6 +374,9 @@ SingleLinkedListMenu:
         SwapNodes();
         break;
     case 9:
+        ReverseNodesData();
+        break;
+    case 10:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

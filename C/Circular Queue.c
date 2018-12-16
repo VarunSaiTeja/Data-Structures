@@ -5,6 +5,42 @@
 
 int cqueue[capacity], rear = -1, front = -1;
 
+void insertItem()
+{
+    int num;
+    if (front == rear + 1 || rear == capacity - 1)
+    {
+        printf("Circular Queue is Full");
+    }
+    else
+    {
+        printf("Enter an item : ");
+        scanf("%d", &num);
+
+        if (front == -1 || rear == -1)
+        {
+            ++front;
+            ++rear;
+            cqueue[rear] = num;
+        }
+        else
+        {
+            if (rear == capacity - 1)
+            {
+                rear = 0;
+                cqueue[rear] = num;
+            }
+            else
+            {
+                ++rear;
+                cqueue[rear] = num;
+            }
+        }
+
+        printf("Item inserted to Circular Queue");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -22,7 +58,7 @@ CircularQueueMenu:
     switch (choice)
     {
     case 1:
-        //insertItem();
+        insertItem();
         break;
     case 2:
         //deleteItem();

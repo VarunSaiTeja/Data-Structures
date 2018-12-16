@@ -41,6 +41,34 @@ void insertItem()
     }
 }
 
+void deleteItem()
+{
+    if (front == -1 || rear == -1)
+    {
+        printf("Circular Queue is Empty");
+    }
+    else
+    {
+        if (front == rear)
+        {
+            front = rear = -1;
+        }
+        else
+        {
+            if (front == capacity - 1)
+            {
+                front = 0;
+            }
+            else
+            {
+                front++;
+            }
+        }
+
+        printf("Last inserted Item deleted from Circular Queue");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -61,7 +89,7 @@ CircularQueueMenu:
         insertItem();
         break;
     case 2:
-        //deleteItem();
+        deleteItem();
         break;
     case 3:
         //displayItems();

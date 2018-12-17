@@ -57,6 +57,21 @@ void insertNode()
     printf("Node added to Binary Search Tree");
 }
 
+void inOrder(struct node *temp)
+{
+    if (temp->left)
+    {
+        inOrder(temp->left);
+    }
+
+    printf("%d  ", temp->data);
+
+    if (temp->right)
+    {
+        inOrder(temp->right);
+    }
+}
+
 void displayNodes()
 {
     if (root == NULL)
@@ -75,7 +90,7 @@ void displayNodes()
         switch (choice)
         {
         case 1:
-            //inOrder();
+            inOrder(root);
             break;
         case 2:
             //preOrder();

@@ -18,7 +18,7 @@ void insertNode()
     printf("Enter Data : ");
     scanf("%d", &temp->data);
     system("cls");
-    
+
     temp->left = NULL;
     temp->right = NULL;
 
@@ -57,6 +57,39 @@ void insertNode()
     printf("Node added to Binary Search Tree");
 }
 
+void displayNodes()
+{
+    if (root == NULL)
+    {
+        printf("Binary Search Tree is Empty");
+    }
+    else
+    {
+        int choice;
+        system("cls");
+        printf("1. In-Order\n2. Pre-Order\n3. Post-Order");
+        printf("\n\nChoice : ");
+        scanf("%d", &choice);
+        system("cls");
+
+        switch (choice)
+        {
+        case 1:
+            //inOrder();
+            break;
+        case 2:
+            //preOrder();
+            break;
+        case 3:
+            //postOrder();
+            break;
+        default:
+            system("cls");
+            printf("Invalid Choice, Try again");
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -77,7 +110,7 @@ BinarySearchTreeMenu:
         //deleteNode();
         break;
     case 3:
-        //displayNodes();
+        displayNodes();
         break;
     case 4:
         exit(0);

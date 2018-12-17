@@ -87,6 +87,21 @@ void preOrder(struct node *temp)
     }
 }
 
+void postOrder(struct node *temp)
+{
+    if (temp->left)
+    {
+        preOrder(temp->left);
+    }
+
+    if (temp->right)
+    {
+        preOrder(temp->right);
+    }
+
+    printf("%d  ", temp->data);
+}
+
 void displayNodes()
 {
     if (root == NULL)
@@ -111,7 +126,7 @@ void displayNodes()
             preOrder(root);
             break;
         case 3:
-            //postOrder();
+            postOrder(root);
             break;
         default:
             system("cls");

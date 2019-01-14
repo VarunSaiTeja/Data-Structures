@@ -9,6 +9,7 @@ struct node
 };
 
 struct node *root = NULL;
+struct node *end = NULL;
 
 int totalNodes();
 
@@ -25,6 +26,7 @@ void appendAtLast()
     if (root == NULL)
     {
         root = temp;
+        end = temp;
     }
     else
     {
@@ -37,6 +39,7 @@ void appendAtLast()
         }
         p->right = temp;
         temp->left = p;
+        end = temp;
     }
 
     printf("Node created at end");
@@ -55,6 +58,7 @@ void appendAtBegin()
     if (root == NULL)
     {
         root = temp;
+        end = temp;
     }
     else
     {
@@ -193,12 +197,21 @@ void deleteNode()
         }
         else if (loc == 1)
         {
-            struct node *temp;
-            temp = root;
-            root = temp->right;
-            temp->right->left = NULL;
-            temp->right = NULL;
-            free(temp);
+            if (root->right == NULL)
+            {
+                root = NULL;
+                end = NULL;
+                free(root);
+            }
+            else
+            {
+                struct node *temp;
+                temp = root;
+                root = temp->right;
+                temp->right->left = NULL;
+                temp->right = NULL;
+                free(temp);
+            }
 
             printf("Node deleted at desired location");
         }
@@ -215,7 +228,16 @@ void deleteNode()
             }
 
             q = p->right;
-            p->right = q->right;
+            if (q->right != NULL)
+            {
+                p->right = q->right;
+                q->right->left = p;
+            }
+            else
+            {
+                p->right = NULL;
+                end = p;
+            }
             q->right = NULL;
             q->left = NULL;
             free(q);

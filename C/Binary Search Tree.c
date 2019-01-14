@@ -135,6 +135,116 @@ void displayNodes()
     }
 }
 
+void deleteNode()
+{
+    if (root == NULL)
+    {
+        printf("Binary Search Tree is Empty");
+    }
+    else
+    {
+        int data;
+        printf("Enter data of Node : ");
+        scanf("%d", &data);
+        struct node *current, *parent;
+        current = root;
+        while (TRUE)
+        {
+            parent = current;
+
+            if (data > current->data)
+            {
+                current = current->right;
+            }
+            else if (data < current->data)
+            {
+                current = current->left;
+            }
+
+            if (current->data == data)
+            {
+                break;
+            }
+        }
+
+        if (current->left == NULL && current->right == NULL)
+        {
+            if (parent->left == current)
+            {
+                parent->left = NULL;
+            }
+            else
+            {
+                parent->right = NULL;
+            }
+
+            free(current);
+            printf("Node deleted");
+        }
+        else
+        {
+            if ((current->left == NULL && current->right != NULL) || (current->left != NULL && current->right == NULL))
+            {
+                if (parent->left == current)
+                {
+                    if (current->left != NULL)
+                    {
+                        parent->left = current->left;
+                    }
+                    else
+                    {
+                        parent->left = current->right;
+                    }
+                }
+                else
+                {
+                    if (current->left != NULL)
+                    {
+                        parent->right = current->left;
+                    }
+                    else
+                    {
+                        parent->right = current->right;
+                    }
+                }
+
+                free(current);
+                printf("Node deleted");
+            }
+            else
+            {
+                struct node *least, *least_parent;
+                least_parent = current;
+                least = current->right;
+                while (least->left != NULL)
+                {
+                    least_parent = least;
+                    least = least->left;
+                }
+
+                current->data = least->data;
+
+                if (least->right != NULL)
+                {
+                    least_parent->left = least->right;
+                }
+                else
+                {
+                    least_parent->left = NULL;
+                }
+
+                if (least_parent == current)
+                {
+                    least_parent->right = NULL;
+                }
+
+                free(least);
+                printf("Node deleted");
+            }
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -152,7 +262,7 @@ BinarySearchTreeMenu:
         insertNode();
         break;
     case 2:
-        //deleteNode();
+        deleteNode();
         break;
     case 3:
         displayNodes();

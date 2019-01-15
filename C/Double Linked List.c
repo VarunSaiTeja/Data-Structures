@@ -122,6 +122,25 @@ void appendAtNode()
     }
 }
 
+void displayNodesDataReverse()
+{
+    if (end == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        struct node *temp;
+        temp = end;
+
+        while (temp != NULL)
+        {
+            printf("%d  ", temp->data);
+            temp = temp->left;
+        }
+    }
+}
+
 void displayNodesData()
 {
     if (root == NULL)
@@ -414,10 +433,12 @@ DoubleLinkedListMenu:
     printf("4. Length\n");
     printf("5. Display only Nodes Data\n");
     printf("6. Display with Nodes Data & Links\n");
-    printf("7. Delete\n");
-    printf("8. Swap Adjacent Nodes\n");
-    printf("9. Swap Nodes\n");
-    printf("10. Quit\n");
+    printf("7. Display only Nodes Data From back\n");
+    printf("8. Display with Nodes Data & Links From back\n");
+    printf("9. Delete\n");
+    printf("10. Swap Adjacent Nodes\n");
+    printf("11. Swap Nodes\n");
+    printf("12. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -443,15 +464,21 @@ DoubleLinkedListMenu:
         displayNodesDataAndLinks();
         break;
     case 7:
-        deleteNode();
+        displayNodesDataReverse();
         break;
     case 8:
-        swapAdjacentNodes();
+        //displayNodesDataAndReverse();
         break;
     case 9:
-        SwapNodes();
+        deleteNode();
         break;
     case 10:
+        swapAdjacentNodes();
+        break;
+    case 11:
+        SwapNodes();
+        break;
+    case 12:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

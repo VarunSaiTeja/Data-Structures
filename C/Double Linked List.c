@@ -141,6 +141,25 @@ void displayNodesDataReverse()
     }
 }
 
+displayNodesDataAndReverse()
+{
+    if (end == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        struct node *temp;
+        temp = end;
+        printf("\nEnd of Node = %u\n\n\n", end);
+        while (temp != NULL)
+        {
+            printf("%u = %u -> %d -> %u\n\n", temp, temp->left, temp->data, temp->right);
+            temp = temp->left;
+        }
+    }
+}
+
 void displayNodesData()
 {
     if (root == NULL)
@@ -467,7 +486,7 @@ DoubleLinkedListMenu:
         displayNodesDataReverse();
         break;
     case 8:
-        //displayNodesDataAndReverse();
+        displayNodesDataAndReverse();
         break;
     case 9:
         deleteNode();

@@ -11,7 +11,8 @@ int get_choice()
     printf("Array Operations\n\n");
     printf("1. Display Array Elements\n");
     printf("2. Linear Search\n");
-    printf("3. Exit\n");
+    printf("3. Binary Search\n");
+    printf("4. Exit\n");
     printf("\nChoice : ");
     scanf("%d", &choice);
     return choice;
@@ -40,10 +41,38 @@ int linear_search(int *array, int array_elements_count, int element, int *locati
     return FALSE;
 }
 
+int binary_search(int *array, int array_elements_count, int element, int *location)
+{
+    int start = 0, end = array_elements_count - 1, middle;
+
+    while (start <= end)
+    {
+        middle = (start + end) / 2;
+        if (element == array[middle])
+        {
+            *location = middle;
+            return TRUE;
+        }
+        else
+        {
+            if (element > array[middle])
+            {
+                start = ++middle;
+            }
+            else
+            {
+                end = --middle;
+            }
+        }
+    }
+
+    return FALSE;
+}
+
 int main(int argc, char const *argv[])
 {
     int *array, array_elements_count, choice;
-    printf("Enter no of array elements : ");
+    printf("Enter count of array elements : ");
     scanf("%d", &array_elements_count);
     array = (int *)calloc(array_elements_count, sizeof(int));
 
@@ -65,7 +94,7 @@ array_operations:
     {
         int element, location;
         system("cls");
-        printf("Enter array element to be deleted : ");
+        printf("Enter array element to search : ");
         scanf("%d", &element);
         if (linear_search(array, array_elements_count, element, &location))
         {
@@ -80,13 +109,31 @@ array_operations:
         break;
     }
     case 3:
+    {
+        int element, location;
+        system("cls");
+        printf("Enter array element to search : ");
+        scanf("%d", &element);
+        if (binary_search(array, array_elements_count, element, &location))
+        {
+            system("cls");
+            printf("Element found at index location : %d", location);
+        }
+        else
+        {
+            printf("Element not found");
+        }
+
+        break;
+    }
+    case 4:
         exit(0);
         break;
     default:
         break;
     }
 
-    printf("\n");
+    printf("\n\n");
     system("pause");
     goto array_operations;
 }

@@ -12,7 +12,8 @@ int get_choice()
     printf("1. Display Array Elements\n");
     printf("2. Linear Search\n");
     printf("3. Binary Search\n");
-    printf("4. Exit\n");
+    printf("4. Delete Element\n");
+    printf("5. Exit\n");
     printf("\nChoice : ");
     scanf("%d", &choice);
     return choice;
@@ -67,6 +68,29 @@ int binary_search(int *array, int array_elements_count, int element, int *locati
     }
 
     return FALSE;
+}
+
+void delete_element(int *array, int *array_elements_count)
+{
+    system("cls");
+    printf("Enter an element to be deleted : ");
+    int num, location;
+    scanf("%d", &num);
+    system("cls");
+    if (linear_search(array, *array_elements_count, num, &location))
+    {
+        for (int index = location; index < *array_elements_count; index++)
+        {
+            array[index] = array[index + 1];
+        }
+        --(*array_elements_count);
+        array = (int *)realloc(array, (*array_elements_count) * (sizeof(int)));
+        printf("Element deleted from array");
+    }
+    else
+    {
+        printf("Element not found in array");
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -127,6 +151,9 @@ array_operations:
         break;
     }
     case 4:
+        delete_element(array, &array_elements_count);
+        break;
+    case 5:
         exit(0);
         break;
     default:

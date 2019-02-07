@@ -327,6 +327,31 @@ void ReverseNodesData()
     }
 }
 
+void ReverseNodesConnection()
+{
+    struct node *temp, *temp_root;
+    temp = temp_root = root;
+    int total_nodes = totalNodes();
+    while (temp->link != NULL)
+    {
+        temp = temp->link;
+    }
+    root = temp;
+
+    for (int count = 1; count < total_nodes; count++)
+    {
+        temp = temp_root;
+        while (temp->link->link != NULL)
+        {
+            temp = temp->link;
+        }
+        temp->link->link = temp;
+        temp->link = NULL;
+    }
+
+    printf("Connection between nodes reversed");
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -342,7 +367,8 @@ SingleLinkedListMenu:
     printf("7. Swap Adjacent Nodes\n");
     printf("8. Swap Nodes\n");
     printf("9. Reverse Data in Nodes\n");
-    printf("10. Quit\n");
+    printf("10. Reverse Nodes Connection\n");
+    printf("11. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -377,6 +403,9 @@ SingleLinkedListMenu:
         ReverseNodesData();
         break;
     case 10:
+        ReverseNodesConnection();
+        break;
+    case 11:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

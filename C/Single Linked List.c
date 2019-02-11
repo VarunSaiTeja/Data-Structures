@@ -143,6 +143,20 @@ void deleteNode()
     }
 }
 
+struct node *fetchDataLocation(int data)
+{
+    struct node *temp = root;
+    while (temp->link != NULL)
+    {
+        if (data == temp->data)
+        {
+            return temp;
+        }
+        temp = temp->link;
+    }
+    return NULL;
+}
+
 int totalNodes()
 {
     int count = 0;

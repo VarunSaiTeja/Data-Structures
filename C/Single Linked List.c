@@ -366,6 +366,40 @@ void ReverseNodesConnection()
     printf("Connection between nodes reversed");
 }
 
+void appendAtNodeData()
+{
+    if (root == NULL)
+    {
+        system("cls");
+        printf("Single Linked List is Empty");
+    }
+    else
+    {
+        int data;
+        system("cls");
+        printf("Enter the Node Data of previous Node : ");
+        scanf("%d", &data);
+        system("cls");
+        struct node *loc = fetchDataLocation(data);
+        if (loc == NULL)
+        {
+            printf("Incorrect Node Data");
+        }
+        else
+        {
+            struct node *temp;
+            temp = (struct node *)malloc(sizeof(struct node));
+            temp->link = loc->link;
+            loc->link = temp;
+            system("cls");
+            printf("Enter data for new Node : ");
+            scanf("%d", &temp->data);
+            system("cls");
+            printf("New Node Inserted at desired location");
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -374,15 +408,16 @@ SingleLinkedListMenu:
     printf("Single Linked List Operations : \n\n");
     printf("1. Append at End\n");
     printf("2. Append at Begin\n");
-    printf("3. Append at Node\n");
-    printf("4. Length\n");
-    printf("5. Display\n");
-    printf("6. Delete\n");
-    printf("7. Swap Adjacent Nodes\n");
-    printf("8. Swap Nodes\n");
-    printf("9. Reverse Data in Nodes\n");
-    printf("10. Reverse Nodes Connection\n");
-    printf("11. Quit\n");
+    printf("3. Insert at Location\n");
+    printf("4. Append after Node Data\n");
+    printf("5. Length of Linked List\n");
+    printf("6. Display Linked List\n");
+    printf("7. Delete a Node at Location\n");
+    printf("8. Swap Adjacent Nodes\n");
+    printf("9. Swap Nodes\n");
+    printf("10. Reverse Data in Nodes\n");
+    printf("11. Reverse Nodes Connection\n");
+    printf("12. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -399,27 +434,30 @@ SingleLinkedListMenu:
         appendAtNode();
         break;
     case 4:
-        printf("Total nodes are %d", totalNodes());
+        appendAtNodeData();
         break;
     case 5:
-        displayNodes();
+        printf("Total nodes are %d", totalNodes());
         break;
     case 6:
-        deleteNode();
+        displayNodes();
         break;
     case 7:
-        swapAdjacentNodes();
+        deleteNode();
         break;
     case 8:
-        SwapNodes();
+        swapAdjacentNodes();
         break;
     case 9:
-        ReverseNodesData();
+        SwapNodes();
         break;
     case 10:
-        ReverseNodesConnection();
+        ReverseNodesData();
         break;
     case 11:
+        ReverseNodesConnection();
+        break;
+    case 12:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

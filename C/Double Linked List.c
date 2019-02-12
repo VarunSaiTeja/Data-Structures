@@ -62,8 +62,6 @@ void appendAtBegin()
     }
     else
     {
-        struct node *p;
-        p = root;
         temp->right = root;
         root = temp;
     }
@@ -445,7 +443,7 @@ int main(int argc, char const *argv[])
     int choice;
 DoubleLinkedListMenu:
     system("cls");
-    printf("Single Linked List Operations : \n\n");
+    printf("Double Linked List Operations : \n\n");
     printf("1. Append at End\n");
     printf("2. Append at Begin\n");
     printf("3. Append at Node\n");

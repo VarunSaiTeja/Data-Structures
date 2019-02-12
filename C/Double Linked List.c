@@ -26,22 +26,13 @@ void appendAtLast()
     if (root == NULL)
     {
         root = temp;
-        end = temp;
     }
     else
     {
-        struct node *p;
-        p = root;
-
-        while (p->right != NULL)
-        {
-            p = p->right;
-        }
-        p->right = temp;
-        temp->left = p;
-        end = temp;
+        temp->left = end;
+        end->right = temp;
     }
-
+    end = temp;
     printf("Node created at end");
 }
 

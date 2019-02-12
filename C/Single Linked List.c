@@ -400,6 +400,44 @@ void appendAtNodeData()
     }
 }
 
+void deleteNodeWithData()
+{
+    if (root == NULL)
+    {
+        printf("Single Linked List is Empty");
+    }
+    else
+    {
+        int data;
+        printf("Enter Node Data : ");
+        scanf("%d", &data);
+        system("cls");
+        struct node *temp = root;
+        while (temp->link != NULL)
+        {
+            if (data == temp->link->data)
+            {
+                break;
+            }
+            temp = temp->link;
+        }
+
+        if (temp->link == NULL)
+        {
+            printf("Node with entered data not present");
+        }
+        else
+        {
+            struct node *del;
+            del = temp->link;
+            temp->link = temp->link->link;
+            del->link = NULL;
+            free(del);
+            printf("Node delete from Single Linked List");
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -413,11 +451,12 @@ SingleLinkedListMenu:
     printf("5. Length of Linked List\n");
     printf("6. Display Linked List\n");
     printf("7. Delete a Node at Location\n");
-    printf("8. Swap Adjacent Nodes\n");
-    printf("9. Swap Nodes\n");
-    printf("10. Reverse Data in Nodes\n");
-    printf("11. Reverse Nodes Connection\n");
-    printf("12. Quit\n");
+    printf("8. Delete Node with Data\n");
+    printf("9. Swap Adjacent Nodes\n");
+    printf("10. Swap Nodes\n");
+    printf("11. Reverse Data in Nodes\n");
+    printf("12. Reverse Nodes Connection\n");
+    printf("13. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -446,18 +485,21 @@ SingleLinkedListMenu:
         deleteNode();
         break;
     case 8:
-        swapAdjacentNodes();
+        deleteNodeWithData();
         break;
     case 9:
-        SwapNodes();
+        swapAdjacentNodes();
         break;
     case 10:
-        ReverseNodesData();
+        SwapNodes();
         break;
     case 11:
-        ReverseNodesConnection();
+        ReverseNodesData();
         break;
     case 12:
+        ReverseNodesConnection();
+        break;
+    case 13:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

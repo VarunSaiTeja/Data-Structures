@@ -53,6 +53,7 @@ void appendAtBegin()
     }
     else
     {
+        root->left = temp;
         temp->right = root;
         root = temp;
     }

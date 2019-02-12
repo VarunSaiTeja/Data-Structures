@@ -430,6 +430,43 @@ void SwapNodes()
     }
 }
 
+void appendAfterNodeData()
+{
+    int data;
+    printf("Enter data of previous Node : ");
+    scanf("%d", &data);
+    system("cls");
+
+    struct node *p = root;
+    while (p->data != data)
+    {
+        p = p->right;
+    }
+
+    if (data != p->data)
+    {
+        printf("Incorrect Node Data");
+    }
+    else
+    {
+        struct node *temp = (struct node *)malloc(sizeof(struct node));
+        temp->left = NULL;
+        temp->right = NULL;
+        printf("Enter data for new Node : ");
+        scanf("%d", &temp->data);
+        system("cls");
+
+        if (p->right != NULL)
+        {
+            p->right->left = temp;
+        }
+        temp->left = p;
+        temp->right = p->right;
+        p->right = temp;
+        printf("New Node Inserted at desired location");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -438,16 +475,17 @@ DoubleLinkedListMenu:
     printf("Double Linked List Operations : \n\n");
     printf("1. Append at End\n");
     printf("2. Append at Begin\n");
-    printf("3. Append at Node\n");
-    printf("4. Length\n");
-    printf("5. Display only Nodes Data\n");
-    printf("6. Display with Nodes Data & Links\n");
-    printf("7. Display only Nodes Data From back\n");
-    printf("8. Display with Nodes Data & Links From back\n");
-    printf("9. Delete\n");
-    printf("10. Swap Adjacent Nodes\n");
-    printf("11. Swap Nodes\n");
-    printf("12. Quit\n");
+    printf("3. Insert at Location\n");
+    printf("4. Append after Node Data\n");
+    printf("5. Length of Linked List\n");
+    printf("6. Display only Nodes Data\n");
+    printf("7. Display with Nodes Data & Links\n");
+    printf("8. Display only Nodes Data From back\n");
+    printf("9. Display with Nodes Data & Links From back\n");
+    printf("10. Delete\n");
+    printf("11. Swap Adjacent Nodes\n");
+    printf("12. Swap Nodes\n");
+    printf("13. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -464,30 +502,33 @@ DoubleLinkedListMenu:
         appendAtNode();
         break;
     case 4:
-        printf("Total nodes are %d", totalNodes());
+        appendAfterNodeData();
         break;
     case 5:
-        displayNodesData();
+        printf("Total nodes are %d", totalNodes());
         break;
     case 6:
-        displayNodesDataAndLinks();
+        displayNodesData();
         break;
     case 7:
-        displayNodesDataReverse();
+        displayNodesDataAndLinks();
         break;
     case 8:
-        displayNodesDataAndReverse();
+        displayNodesDataReverse();
         break;
     case 9:
-        deleteNode();
+        displayNodesDataAndReverse();
         break;
     case 10:
-        swapAdjacentNodes();
+        deleteNode();
         break;
     case 11:
-        SwapNodes();
+        swapAdjacentNodes();
         break;
     case 12:
+        SwapNodes();
+        break;
+    case 13:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

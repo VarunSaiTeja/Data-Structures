@@ -131,7 +131,7 @@ void displayNodesDataReverse()
     }
 }
 
-displayNodesDataAndReverse()
+void displayNodesDataAndReverse()
 {
     if (end == NULL)
     {
@@ -141,12 +141,13 @@ displayNodesDataAndReverse()
     {
         struct node *temp;
         temp = end;
-        printf("\nEnd of Node = %u\n\n\n", end);
+        printf("\nEnd of Linked List = %u\n\n\n", end);
         while (temp != NULL)
         {
             printf("%u = %u -> %d -> %u\n\n", temp, temp->left, temp->data, temp->right);
             temp = temp->left;
         }
+        printf("\nRoot of Linked List = %u\n", root);
     }
 }
 
@@ -180,14 +181,13 @@ void displayNodesDataAndLinks()
     {
         struct node *temp;
         temp = root;
-
-        printf("\nRoot of Node = %u\n\n\n", root);
-
+        printf("\nRoot of Linked List = %u\n\n\n", root);
         while (temp != NULL)
         {
             printf("%u = %u -> %d -> %u\n\n", temp, temp->left, temp->data, temp->right);
             temp = temp->right;
         }
+        printf("\nEnd of Linked List = %u\n", end);
     }
 }
 

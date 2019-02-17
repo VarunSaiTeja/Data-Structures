@@ -316,6 +316,177 @@ void appendAfterNodeData()
     }
 }
 
+void SwapNodes()
+{
+    short int nodes_count = totalNodes();
+
+    if (nodes_count)
+    {
+        if (nodes_count == 1)
+        {
+            printf("Only one node present in the List");
+        }
+        else
+        {
+            if (nodes_count == 2)
+            {
+                root->left = end;
+                end->right = root;
+                root->right = NULL;
+                end->left = NULL;
+                struct node *temp;
+                temp = root;
+                root = end;
+                end = temp;
+                printf("Nodes Swapped");
+            }
+            else
+            {
+                int data1, data2, loc1, loc2;
+                struct node *node1, *node2;
+                node1 = node2 = root;
+                loc1 = loc2 = 0;
+                printf("Enter Data of First Node : ");
+                scanf("%d", &data1);
+                system("cls");
+
+                while (node1 != NULL)
+                {
+                    ++loc1;
+                    if (data1 == node1->data)
+                    {
+                        break;
+                    }
+                    node1 = node1->right;
+                }
+
+                if (node1 == NULL)
+                {
+                    printf("Opps Node with data %d not present", data1);
+                }
+                else
+                {
+                    printf("Enter Data of Second Node : ");
+                    scanf("%d", &data2);
+                    system("cls");
+
+                    if (data1 == data2)
+                    {
+                        printf("Opps Data was same, Swapping Not possible");
+                    }
+                    else
+                    {
+                        while (node2 != NULL)
+                        {
+                            ++loc2;
+                            if (data2 == node2->data)
+                            {
+                                break;
+                            }
+                            node2 = node2->right;
+                        }
+
+                        if (node2 == NULL)
+                        {
+                            printf("Opps Node with data %d not present", data2);
+                        }
+                        else
+                        {
+                            if (loc1 > loc2)
+                            {
+                                int temp_loc;
+                                temp_loc = loc1;
+                                loc1 = loc2;
+                                loc2 = temp_loc;
+                                struct node *temp_node;
+                                temp_node = node1;
+                                node1 = node2;
+                                node2 = temp_node;
+                            }
+
+                            if (loc1 == (loc2 - 1))
+                            {
+                                if (loc1 != 1 && loc2 != nodes_count)
+                                {
+                                    node1->left->right = node2;
+                                    node2->right->left = node1;
+                                }
+                                else
+                                {
+                                    if (loc1 == 1)
+                                    {
+                                        node2->right->left = node1;
+                                        root = node2;
+                                    }
+
+                                    if (loc2 == nodes_count)
+                                    {
+                                        node1->left->right = node2;
+                                        end = node1;
+                                    }
+                                }
+
+                                node2->left = node1->left;
+                                node1->left = node2;
+                                node1->right = node2->right;
+                                node2->right = node1;
+                            }
+                            else
+                            {
+                                struct node *temp;
+                                temp = (struct node *)malloc(sizeof(struct node));
+
+                                if (loc1 != 1 && loc2 != nodes_count)
+                                {
+                                    node1->left->right = node2;
+                                    node2->right->left = node1;
+                                }
+                                else
+                                {
+                                    if (loc1 == 1 && loc2 == nodes_count)
+                                    {
+                                        root = node2;
+                                        end = node1;
+                                    }
+                                    else
+                                    {
+                                        if (loc1 == 1)
+                                        {
+                                            node2->right->left = node1;
+                                            root = node2;
+                                        }
+
+                                        if (loc2 == nodes_count)
+                                        {
+                                            node1->left->right = node2;
+                                            end = node1;
+                                        }
+                                    }
+                                }
+
+                                node1->right->left = node2;
+                                node2->left->right = node1;
+                                temp->left = node1->left;
+                                temp->right = node1->right;
+                                node1->left = node2->left;
+                                node1->right = node2->right;
+                                node2->left = temp->left;
+                                node2->right = temp->right;
+                            }
+                        }
+
+                        printf("Nodes Swapped");
+                    }
+                }
+            }
+        }
+    }
+    else
+    {
+        printf("Double Linked List is Empty");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -332,7 +503,8 @@ DoubleLinkedListMenu:
     printf("8. Display only Nodes Data From back\n");
     printf("9. Display with Nodes Data & Links From back\n");
     printf("10. Delete\n");
-    printf("11. Quit\n");
+    printf("11. Swap Nodes\n");
+    printf("12. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -370,6 +542,9 @@ DoubleLinkedListMenu:
         deleteNode();
         break;
     case 11:
+        SwapNodes();
+        break;
+    case 12:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

@@ -316,7 +316,7 @@ void appendAfterNodeData()
     }
 }
 
-void SwapNodes()
+void SwapNodes(int arg1 = 0, int arg2 = 0)
 {
     short int nodes_count = totalNodes();
 
@@ -346,9 +346,18 @@ void SwapNodes()
                 struct node *node1, *node2;
                 node1 = node2 = root;
                 loc1 = loc2 = 0;
-                printf("Enter Data of First Node : ");
-                scanf("%d", &data1);
-                system("cls");
+
+                if (arg1 == 0 && arg2 == 0)
+                {
+                    printf("Enter Data of First Node : ");
+                    scanf("%d", &data1);
+                    system("cls");
+                }
+                else
+                {
+                    data1 = arg1;
+                    data2 = arg2;
+                }
 
                 while (node1 != NULL)
                 {
@@ -366,9 +375,12 @@ void SwapNodes()
                 }
                 else
                 {
-                    printf("Enter Data of Second Node : ");
-                    scanf("%d", &data2);
-                    system("cls");
+                    if (arg1 == 0 && arg2 == 0)
+                    {
+                        printf("Enter Data of Second Node : ");
+                        scanf("%d", &data2);
+                        system("cls");
+                    }
 
                     if (data1 == data2)
                     {

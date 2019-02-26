@@ -499,6 +499,28 @@ void SwapNodes(int arg1 = 0, int arg2 = 0)
     }
 }
 
+void BubbleSort()
+{
+    struct node *temp1, *temp2, *temp;
+
+    for (temp1 = root; temp1 != NULL; temp1 = temp1->right)
+    {
+        for (temp2 = temp1->right; temp2 != NULL; temp2 = temp2->right)
+        {
+            if (temp1->data > temp2->data)
+            {
+                SwapNodes(temp1->data, temp2->data);
+                temp = temp1;
+                temp1 = temp2;
+                temp2 = temp;
+                system("cls");
+            }
+        }
+    }
+
+    printf("Double Linked List Sorted");
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -516,7 +538,8 @@ DoubleLinkedListMenu:
     printf("9. Display with Nodes Data & Links From back\n");
     printf("10. Delete\n");
     printf("11. Swap Nodes\n");
-    printf("12. Quit\n");
+    printf("12. Bubble Sort\n");
+    printf("13. Quit\n");
     printf("\n\nChoice : ");
     scanf("%d", &choice);
     system("cls");
@@ -557,6 +580,9 @@ DoubleLinkedListMenu:
         SwapNodes();
         break;
     case 12:
+        BubbleSort();
+        break;
+    case 13:
         exit(0);
     default:
         printf("Invalid Choice, Try again");

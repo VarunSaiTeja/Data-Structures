@@ -8,7 +8,7 @@ int cqueue[capacity], rear = -1, front = -1;
 void insertItem()
 {
     int num;
-    if (front == rear + 1 || rear == capacity - 1)
+    if (front == 0 && rear == capacity - 1 || rear + 1 == front)
     {
         printf("Circular Queue is Full");
     }
@@ -17,33 +17,29 @@ void insertItem()
         printf("Enter an item : ");
         scanf("%d", &num);
 
-        if (front == -1 || rear == -1)
+        if (front == -1)
         {
-            ++front;
-            ++rear;
-            cqueue[rear] = num;
+            front = rear = 0;
         }
         else
         {
             if (rear == capacity - 1)
             {
                 rear = 0;
-                cqueue[rear] = num;
             }
             else
             {
                 ++rear;
-                cqueue[rear] = num;
             }
         }
-
+        cqueue[rear] = num;
         printf("Item inserted to Circular Queue");
     }
 }
 
 void deleteItem()
 {
-    if (front == -1 || rear == -1)
+    if (front == -1)
     {
         printf("Circular Queue is Empty");
     }
@@ -66,6 +62,36 @@ void deleteItem()
         }
 
         printf("Last inserted Item deleted from Circular Queue");
+    }
+}
+
+void displayItems()
+{
+    if (front == -1)
+    {
+        printf("Queue is empty");
+    }
+    else
+    {
+        if (rear >= front)
+        {
+            for (int index = front; index <= rear; index++)
+            {
+                printf("%d,", cqueue[index]);
+            }
+        }
+        else
+        {
+            for (int index = front; index < capacity; index++)
+            {
+                printf("%d,", cqueue[index]);
+            }
+
+            for (int index = 0; index <= rear; index++)
+            {
+                printf("%d,", cqueue[index]);
+            }
+        }
     }
 }
 
@@ -92,7 +118,7 @@ CircularQueueMenu:
         deleteItem();
         break;
     case 3:
-        //displayItems();
+        displayItems();
         break;
     case 4:
         exit(0);

@@ -38,6 +38,36 @@ void PushNode()
     printf("Node Pushed to Stack");
 }
 
+void PopNode()
+{
+    if (root == NULL)
+    {
+        printf("Nodes are Empty");
+    }
+    else
+    {
+        struct node *temp = root;
+
+        if (root->link == NULL)
+        {
+            root = NULL;
+            free(temp);
+        }
+        else
+        {
+            while (temp->link != NULL && temp->link->link != NULL)
+            {
+                temp = temp->link;
+            }
+
+            free(temp->link);
+            temp->link = NULL;
+        }
+
+        printf("Last Node insertes was Popped");
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -58,7 +88,7 @@ QueueUsingSingleLinkedListMenu:
         PushNode();
         break;
     case 2:
-        //PopNode();
+        PopNode();
         break;
     case 3:
         //DisplayNodes();

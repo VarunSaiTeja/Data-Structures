@@ -27,6 +27,16 @@ void add_element()
     array[1] = element;
 }
 
+void display_elements()
+{
+    printf("Elements are : ");
+    for (int index = 1; index <= n; index++)
+    {
+        printf("%d ", array[index]);
+    }
+    printf("\n\n");
+}
+
 int main()
 {
     int choice;
@@ -51,7 +61,7 @@ menu:
         //delete_element();
         break;
     case 3:
-        //display_elements();
+        display_elements();
         break;
     case 4:
         exit(0);
